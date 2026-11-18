@@ -1,0 +1,1579 @@
+{
+  "days": [
+    {
+      "day": "Monday",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "name": "Rice Porridge with Banana",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 75.0
+            },
+            {
+              "name": "Banana",
+              "quantity": 0.1,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 20.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 2.0
+            },
+            {
+              "name": "Cinnamon",
+              "quantity": 0.001,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 3000.0,
+              "estimated_total_price_lkr": 3.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.01,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 1200.0,
+              "estimated_total_price_lkr": 12.0
+            }
+          ],
+          "nutrition": {
+            "calories": 1200,
+            "protein": 20,
+            "carbs": 240,
+            "fat": 4,
+            "fiber": 5
+          },
+          "estimated_price_lkr": 112.0
+        },
+        {
+          "meal_type": "lunch",
+          "name": "Dhal Curry with Rice and Carrot Stir Fry",
+          "ingredients": [
+            {
+              "name": "Dhal",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 400.0,
+              "estimated_total_price_lkr": 120.0
+            },
+            {
+              "name": "Rice",
+              "quantity": 0.5,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 125.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.4,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 120.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Tomato",
+              "quantity": 0.1,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 180.0,
+              "estimated_total_price_lkr": 18.0
+            },
+            {
+              "name": "Garlic",
+              "quantity": 0.05,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 10.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.02,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 1200.0,
+              "estimated_total_price_lkr": 24.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 2.0
+            },
+            {
+              "name": "Spices",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 5.0
+            }
+          ],
+          "nutrition": {
+            "calories": 1100,
+            "protein": 35,
+            "carbs": 170,
+            "fat": 15,
+            "fiber": 10
+          },
+          "estimated_price_lkr": 454.0
+        },
+        {
+          "meal_type": "dinner",
+          "name": "Carrot and Rice Stir Fry with Banana Dessert",
+          "ingredients": [
+            {
+              "name": "Carrot",
+              "quantity": 0.4,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 120.0
+            },
+            {
+              "name": "Rice",
+              "quantity": 0.5,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 125.0
+            },
+            {
+              "name": "Beans",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 50.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.1,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 15.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.015,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 1200.0,
+              "estimated_total_price_lkr": 18.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 2.0
+            },
+            {
+              "name": "Spices",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 5.0
+            },
+            {
+              "name": "Banana",
+              "quantity": 0.1,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 20.0
+            }
+          ],
+          "nutrition": {
+            "calories": 900,
+            "protein": 25,
+            "carbs": 120,
+            "fat": 10,
+            "fiber": 8
+          },
+          "estimated_price_lkr": 355.0
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "name": "Rice Porridge with Banana",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 50.0
+            },
+            {
+              "name": "Coconut milk",
+              "quantity": 0.2,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Banana",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 60.0
+            },
+            {
+              "name": "Cinnamon",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 5.0
+            }
+          ],
+          "nutrition": {
+            "calories": 1200,
+            "protein": 30,
+            "carbs": 180,
+            "fat": 35,
+            "fiber": 20
+          },
+          "estimated_price_lkr": 145.0
+        },
+        {
+          "meal_type": "lunch",
+          "name": "Dhal Curry with Rice and Carrot Stir Fry",
+          "ingredients": [
+            {
+              "name": "Dhal",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 400.0,
+              "estimated_total_price_lkr": 120.0
+            },
+            {
+              "name": "Rice",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 75.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.4,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 120.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Garlic",
+              "quantity": 0.05,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 10.0
+            },
+            {
+              "name": "Ginger",
+              "quantity": 0.05,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 10.0
+            },
+            {
+              "name": "Tomato",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 180.0,
+              "estimated_total_price_lkr": 36.0
+            },
+            {
+              "name": "Coconut milk",
+              "quantity": 0.3,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 45.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.02,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 40.0
+            },
+            {
+              "name": "Curry leaves",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 1000.0,
+              "estimated_total_price_lkr": 10.0
+            },
+            {
+              "name": "Chili",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 5.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 2.0
+            }
+          ],
+          "nutrition": {
+            "calories": 1100,
+            "protein": 40,
+            "carbs": 150,
+            "fat": 20,
+            "fiber": 25
+          },
+          "estimated_price_lkr": 503.0
+        },
+        {
+          "meal_type": "dinner",
+          "name": "Mixed Vegetable Curry with Rice",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 75.0
+            },
+            {
+              "name": "Eggplant",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 60.0
+            },
+            {
+              "name": "Okra",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 45.0
+            },
+            {
+              "name": "Potato",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 120.0,
+              "estimated_total_price_lkr": 36.0
+            },
+            {
+              "name": "Spinach",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 100.0,
+              "estimated_total_price_lkr": 20.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Garlic",
+              "quantity": 0.05,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 10.0
+            },
+            {
+              "name": "Ginger",
+              "quantity": 0.05,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 10.0
+            },
+            {
+              "name": "Tomato",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 180.0,
+              "estimated_total_price_lkr": 36.0
+            },
+            {
+              "name": "Coconut milk",
+              "quantity": 0.3,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 45.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.02,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 40.0
+            },
+            {
+              "name": "Curry leaves",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 1000.0,
+              "estimated_total_price_lkr": 10.0
+            },
+            {
+              "name": "Chili",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 5.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 2.0
+            }
+          ],
+          "nutrition": {
+            "calories": 900,
+            "protein": 25,
+            "carbs": 120,
+            "fat": 15,
+            "fiber": 15
+          },
+          "estimated_price_lkr": 424.0
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "name": "Rice and Dhal Porridge with Carrot and Banana",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.15,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 37.5
+            },
+            {
+              "name": "Dhal",
+              "quantity": 0.08,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 400.0,
+              "estimated_total_price_lkr": 32.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.08,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 24.0
+            },
+            {
+              "name": "Banana",
+              "quantity": 3,
+              "unit": "piece",
+              "estimated_unit_price_lkr": 30.0,
+              "estimated_total_price_lkr": 90.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.015,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 5.0
+            },
+            {
+              "name": "Turmeric",
+              "quantity": 0.005,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 1500.0,
+              "estimated_total_price_lkr": 7.5
+            }
+          ],
+          "nutrition": {
+            "calories": 1200,
+            "protein": 30,
+            "carbs": 180,
+            "fat": 35,
+            "fiber": 20
+          },
+          "estimated_price_lkr": 226.0
+        },
+        {
+          "meal_type": "lunch",
+          "name": "Vegetable Dhal Curry with Rice",
+          "ingredients": [
+            {
+              "name": "Dhal",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 400.0,
+              "estimated_total_price_lkr": 80.0
+            },
+            {
+              "name": "Rice",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 50.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.1,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.1,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 20.0
+            },
+            {
+              "name": "Tomato",
+              "quantity": 0.1,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 25.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.01,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 20.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 5.0
+            },
+            {
+              "name": "Turmeric",
+              "quantity": 0.005,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 1500.0,
+              "estimated_total_price_lkr": 7.5
+            },
+            {
+              "name": "Cumin",
+              "quantity": 0.005,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 1200.0,
+              "estimated_total_price_lkr": 6.0
+            }
+          ],
+          "nutrition": {
+            "calories": 1100,
+            "protein": 40,
+            "carbs": 150,
+            "fat": 20,
+            "fiber": 25
+          },
+          "estimated_price_lkr": 243.5
+        },
+        {
+          "meal_type": "dinner",
+          "name": "Carrot and Banana Stir Fry with Rice",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 50.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 60.0
+            },
+            {
+              "name": "Banana",
+              "quantity": 1,
+              "unit": "piece",
+              "estimated_unit_price_lkr": 30.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Bell pepper",
+              "quantity": 0.1,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 350.0,
+              "estimated_total_price_lkr": 35.0
+            },
+            {
+              "name": "Soy sauce",
+              "quantity": 0.006,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 2500.0,
+              "estimated_total_price_lkr": 15.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.01,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 20.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 5.0
+            },
+            {
+              "name": "Ginger",
+              "quantity": 0.005,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 10.0
+            }
+          ],
+          "nutrition": {
+            "calories": 900,
+            "protein": 25,
+            "carbs": 120,
+            "fat": 15,
+            "fiber": 15
+          },
+          "estimated_price_lkr": 225.0
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "name": "Rice with Dhal and Carrot Stir Fry",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.5,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 125.0
+            },
+            {
+              "name": "Dhal",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 400.0,
+              "estimated_total_price_lkr": 80.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 90.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 40.0
+            },
+            {
+              "name": "Garlic",
+              "quantity": 0.05,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 25.0
+            },
+            {
+              "name": "Turmeric",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 800.0,
+              "estimated_total_price_lkr": 8.0
+            },
+            {
+              "name": "Coconut milk",
+              "quantity": 0.1,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 1200.0,
+              "estimated_total_price_lkr": 120.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.02,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 40.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 50.0,
+              "estimated_total_price_lkr": 0.5
+            },
+            {
+              "name": "Pepper",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 1500.0,
+              "estimated_total_price_lkr": 15.0
+            },
+            {
+              "name": "Banana",
+              "quantity": 2,
+              "unit": "piece",
+              "estimated_unit_price_lkr": 100.0,
+              "estimated_total_price_lkr": 200.0
+            }
+          ],
+          "nutrition": {
+            "calories": 1200,
+            "protein": 30,
+            "carbs": 180,
+            "fat": 35,
+            "fiber": 20
+          },
+          "estimated_price_lkr": 743.5
+        },
+        {
+          "meal_type": "lunch",
+          "name": "Vegetable Curry with Rice",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.6,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 150.0
+            },
+            {
+              "name": "Dhal",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 400.0,
+              "estimated_total_price_lkr": 120.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.4,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 120.0
+            },
+            {
+              "name": "Potato",
+              "quantity": 0.5,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 75.0
+            },
+            {
+              "name": "Tomato",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 75.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 60.0
+            },
+            {
+              "name": "Garlic",
+              "quantity": 0.05,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 25.0
+            },
+            {
+              "name": "Ginger",
+              "quantity": 0.05,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 600.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Coconut milk",
+              "quantity": 0.15,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 1200.0,
+              "estimated_total_price_lkr": 180.0
+            },
+            {
+              "name": "Curry leaves",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 20.0
+            },
+            {
+              "name": "Turmeric",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 800.0,
+              "estimated_total_price_lkr": 8.0
+            },
+            {
+              "name": "Chili",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 3000.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.03,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 60.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 50.0,
+              "estimated_total_price_lkr": 0.5
+            },
+            {
+              "name": "Banana",
+              "quantity": 3,
+              "unit": "piece",
+              "estimated_unit_price_lkr": 100.0,
+              "estimated_total_price_lkr": 300.0
+            }
+          ],
+          "nutrition": {
+            "calories": 1100,
+            "protein": 40,
+            "carbs": 150,
+            "fat": 20,
+            "fiber": 25
+          },
+          "estimated_price_lkr": 1253.5
+        },
+        {
+          "meal_type": "dinner",
+          "name": "Carrot and Dhal Soup with Rice",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.5,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 125.0
+            },
+            {
+              "name": "Dhal",
+              "quantity": 0.25,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 400.0,
+              "estimated_total_price_lkr": 100.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.4,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 120.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 40.0
+            },
+            {
+              "name": "Garlic",
+              "quantity": 0.03,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 15.0
+            },
+            {
+              "name": "Ginger",
+              "quantity": 0.03,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 600.0,
+              "estimated_total_price_lkr": 18.0
+            },
+            {
+              "name": "Coconut milk",
+              "quantity": 0.1,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 1200.0,
+              "estimated_total_price_lkr": 120.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.02,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 40.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 50.0,
+              "estimated_total_price_lkr": 0.5
+            },
+            {
+              "name": "Pepper",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 1500.0,
+              "estimated_total_price_lkr": 15.0
+            },
+            {
+              "name": "Banana",
+              "quantity": 2,
+              "unit": "piece",
+              "estimated_unit_price_lkr": 100.0,
+              "estimated_total_price_lkr": 200.0
+            }
+          ],
+          "nutrition": {
+            "calories": 900,
+            "protein": 25,
+            "carbs": 120,
+            "fat": 15,
+            "fiber": 15
+          },
+          "estimated_price_lkr": 793.5
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "name": "Rice Porridge with Banana and Carrot",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.1,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 25.0
+            },
+            {
+              "name": "Water",
+              "quantity": 0.5,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 0.0,
+              "estimated_total_price_lkr": 0.0
+            },
+            {
+              "name": "Banana",
+              "quantity": 1,
+              "unit": "piece",
+              "estimated_unit_price_lkr": 80.0,
+              "estimated_total_price_lkr": 80.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.05,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 15.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.005,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 10.0
+            }
+          ],
+          "nutrition": {
+            "calories": 1200,
+            "protein": 30,
+            "carbs": 180,
+            "fat": 35,
+            "fiber": 20
+          },
+          "estimated_price_lkr": 130.0
+        },
+        {
+          "meal_type": "lunch",
+          "name": "Dhal Curry with Rice and Veggies",
+          "ingredients": [
+            {
+              "name": "Dhal",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 400.0,
+              "estimated_total_price_lkr": 80.0
+            },
+            {
+              "name": "Rice",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 50.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.05,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 15.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.03,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 4.5
+            },
+            {
+              "name": "Tomato",
+              "quantity": 0.03,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 120.0,
+              "estimated_total_price_lkr": 3.6
+            },
+            {
+              "name": "Coconut milk",
+              "quantity": 0.1,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 50.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.005,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 10.0
+            },
+            {
+              "name": "Cumin",
+              "quantity": 0.0015,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 3.0
+            },
+            {
+              "name": "Coriander",
+              "quantity": 0.0015,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 3.0
+            }
+          ],
+          "nutrition": {
+            "calories": 1100,
+            "protein": 40,
+            "carbs": 150,
+            "fat": 20,
+            "fiber": 25
+          },
+          "estimated_price_lkr": 219.1
+        },
+        {
+          "meal_type": "dinner",
+          "name": "Vegetable Stir Fry with Rice",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 50.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.1,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Bell pepper",
+              "quantity": 0.05,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 10.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.05,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 7.5
+            },
+            {
+              "name": "Soy sauce",
+              "quantity": 0.01,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 1500.0,
+              "estimated_total_price_lkr": 15.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.01,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 20.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.005,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 2000.0,
+              "estimated_total_price_lkr": 10.0
+            }
+          ],
+          "nutrition": {
+            "calories": 900,
+            "protein": 25,
+            "carbs": 120,
+            "fat": 15,
+            "fiber": 15
+          },
+          "estimated_price_lkr": 142.5
+        }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "name": "Rice Porridge with Banana",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 75.0
+            },
+            {
+              "name": "Banana",
+              "quantity": 5,
+              "unit": "piece",
+              "estimated_unit_price_lkr": 30.0,
+              "estimated_total_price_lkr": 150.0
+            },
+            {
+              "name": "Coconut Milk",
+              "quantity": 0.2,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 40.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 10.0,
+              "estimated_total_price_lkr": 0.1
+            }
+          ],
+          "nutrition": {
+            "calories": 1200,
+            "protein": 30,
+            "carbs": 180,
+            "fat": 35,
+            "fiber": 20
+          },
+          "estimated_price_lkr": 265.1
+        },
+        {
+          "meal_type": "lunch",
+          "name": "Dhal Curry with Rice and Carrot Stir Fry",
+          "ingredients": [
+            {
+              "name": "Dhal",
+              "quantity": 0.4,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 400.0,
+              "estimated_total_price_lkr": 160.0
+            },
+            {
+              "name": "Rice",
+              "quantity": 0.5,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 125.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 90.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Tomato",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 120.0,
+              "estimated_total_price_lkr": 24.0
+            },
+            {
+              "name": "Coconut Oil",
+              "quantity": 0.05,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 15.0
+            },
+            {
+              "name": "Spices",
+              "quantity": 0.02,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 50.0,
+              "estimated_total_price_lkr": 1.0
+            }
+          ],
+          "nutrition": {
+            "calories": 1100,
+            "protein": 40,
+            "carbs": 150,
+            "fat": 20,
+            "fiber": 25
+          },
+          "estimated_price_lkr": 445.0
+        },
+        {
+          "meal_type": "dinner",
+          "name": "Vegetable Stir Fry with Rice",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.4,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 100.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.4,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 120.0
+            },
+            {
+              "name": "Bell Pepper",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 60.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Soy Sauce",
+              "quantity": 0.05,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 12.5
+            },
+            {
+              "name": "Coconut Oil",
+              "quantity": 0.05,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 15.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 10.0,
+              "estimated_total_price_lkr": 0.1
+            }
+          ],
+          "nutrition": {
+            "calories": 900,
+            "protein": 25,
+            "carbs": 120,
+            "fat": 15,
+            "fiber": 15
+          },
+          "estimated_price_lkr": 337.6
+        }
+      ]
+    },
+    {
+      "day": "Sunday",
+      "meals": [
+        {
+          "meal_type": "breakfast",
+          "name": "Rice Porridge with Banana",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 50.0
+            },
+            {
+              "name": "Water",
+              "quantity": 0.5,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 0.0,
+              "estimated_total_price_lkr": 0.0
+            },
+            {
+              "name": "Banana",
+              "quantity": 2,
+              "unit": "piece",
+              "estimated_unit_price_lkr": 30.0,
+              "estimated_total_price_lkr": 60.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.1,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Cinnamon",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 5.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.005,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 100.0,
+              "estimated_total_price_lkr": 0.5
+            }
+          ],
+          "nutrition": {
+            "calories": 600,
+            "protein": 10,
+            "carbs": 120,
+            "fat": 15,
+            "fiber": 10
+          },
+          "estimated_price_lkr": 145.5
+        },
+        {
+          "meal_type": "lunch",
+          "name": "Rice with Dhal and Carrot Curry",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.5,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 125.0
+            },
+            {
+              "name": "Dhal",
+              "quantity": 0.3,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 400.0,
+              "estimated_total_price_lkr": 120.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 60.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.15,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 30.0
+            },
+            {
+              "name": "Tomato",
+              "quantity": 0.15,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 37.5
+            },
+            {
+              "name": "Garlic",
+              "quantity": 0.02,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 3.0
+            },
+            {
+              "name": "Ginger",
+              "quantity": 0.02,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 4.0
+            },
+            {
+              "name": "Cumin",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 400.0,
+              "estimated_total_price_lkr": 4.0
+            },
+            {
+              "name": "Coriander",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 400.0,
+              "estimated_total_price_lkr": 4.0
+            },
+            {
+              "name": "Turmeric",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 3.0
+            },
+            {
+              "name": "Salt",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 100.0,
+              "estimated_total_price_lkr": 1.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.02,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 1200.0,
+              "estimated_total_price_lkr": 24.0
+            }
+          ],
+          "nutrition": {
+            "calories": 900,
+            "protein": 25,
+            "carbs": 140,
+            "fat": 20,
+            "fiber": 15
+          },
+          "estimated_price_lkr": 415.5
+        },
+        {
+          "meal_type": "dinner",
+          "name": "Vegetable Stir Fry with Rice",
+          "ingredients": [
+            {
+              "name": "Rice",
+              "quantity": 0.4,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 250.0,
+              "estimated_total_price_lkr": 100.0
+            },
+            {
+              "name": "Carrot",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 300.0,
+              "estimated_total_price_lkr": 60.0
+            },
+            {
+              "name": "Bell Pepper",
+              "quantity": 0.2,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 350.0,
+              "estimated_total_price_lkr": 70.0
+            },
+            {
+              "name": "Onion",
+              "quantity": 0.1,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 20.0
+            },
+            {
+              "name": "Garlic",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 150.0,
+              "estimated_total_price_lkr": 1.5
+            },
+            {
+              "name": "Ginger",
+              "quantity": 0.01,
+              "unit": "kg",
+              "estimated_unit_price_lkr": 200.0,
+              "estimated_total_price_lkr": 2.0
+            },
+            {
+              "name": "Soy Sauce",
+              "quantity": 0.01,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 500.0,
+              "estimated_total_price_lkr": 5.0
+            },
+            {
+              "name": "Oil",
+              "quantity": 0.015,
+              "unit": "litre",
+              "estimated_unit_price_lkr": 1200.0,
+              "estimated_total_price_lkr": 18.0
+            }
+          ],
+          "nutrition": {
+            "calories": 700,
+            "protein": 15,
+            "carbs": 110,
+            "fat": 12,
+            "fiber": 12
+          },
+          "estimated_price_lkr": 276.5
+        }
+      ]
+    }
+  ]
+}

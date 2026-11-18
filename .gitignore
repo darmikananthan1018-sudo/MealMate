@@ -1,0 +1,44 @@
+backend/venv/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+
+# Frontend
+node_modules/
+dist/
+.vite/
+
+# Backend
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+meal_plan_progress_*.json
+
+# Editor and system
+.vscode/
+.DS_Store
+Thumbs.db
+
+
+# Database backups
+*.sql
+
+# Database backups
+*.sql

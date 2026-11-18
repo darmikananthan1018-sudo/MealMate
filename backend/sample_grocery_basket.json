@@ -1,0 +1,376 @@
+{
+  "basket_type": "weekly",
+  "total_days": 7,
+  "total_unique_items": 29,
+  "items": [
+    {
+      "name": "Banana",
+      "quantity": 0.5,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 200.0,
+      "estimated_total_price_lkr": 100.0,
+      "days_used": [
+        "Monday",
+        "Tuesday"
+      ]
+    },
+    {
+      "name": "Banana",
+      "quantity": 19.0,
+      "unit": "piece",
+      "estimated_unit_price_lkr": 58.42,
+      "estimated_total_price_lkr": 1110.0,
+      "days_used": [
+        "Friday",
+        "Saturday",
+        "Sunday",
+        "Thursday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Beans",
+      "quantity": 0.2,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 250.0,
+      "estimated_total_price_lkr": 50.0,
+      "days_used": [
+        "Monday"
+      ]
+    },
+    {
+      "name": "Bell pepper",
+      "quantity": 0.65,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 269.23,
+      "estimated_total_price_lkr": 175.0,
+      "days_used": [
+        "Friday",
+        "Saturday",
+        "Sunday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Carrot",
+      "quantity": 4.08,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 300.0,
+      "estimated_total_price_lkr": 1224.0,
+      "days_used": [
+        "Friday",
+        "Monday",
+        "Saturday",
+        "Sunday",
+        "Thursday",
+        "Tuesday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Chili",
+      "quantity": 0.03,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 1333.33,
+      "estimated_total_price_lkr": 40.0,
+      "days_used": [
+        "Thursday",
+        "Tuesday"
+      ]
+    },
+    {
+      "name": "Cinnamon",
+      "quantity": 0.021,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 619.05,
+      "estimated_total_price_lkr": 13.0,
+      "days_used": [
+        "Monday",
+        "Sunday",
+        "Tuesday"
+      ]
+    },
+    {
+      "name": "Coconut milk",
+      "quantity": 1.45,
+      "unit": "litre",
+      "estimated_unit_price_lkr": 434.48,
+      "estimated_total_price_lkr": 630.0,
+      "days_used": [
+        "Friday",
+        "Saturday",
+        "Thursday",
+        "Tuesday"
+      ]
+    },
+    {
+      "name": "Coconut Oil",
+      "quantity": 0.1,
+      "unit": "litre",
+      "estimated_unit_price_lkr": 300.0,
+      "estimated_total_price_lkr": 30.0,
+      "days_used": [
+        "Saturday"
+      ]
+    },
+    {
+      "name": "Coriander",
+      "quantity": 0.0115,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 608.7,
+      "estimated_total_price_lkr": 7.0,
+      "days_used": [
+        "Friday",
+        "Sunday"
+      ]
+    },
+    {
+      "name": "Cumin",
+      "quantity": 0.0165,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 787.88,
+      "estimated_total_price_lkr": 13.0,
+      "days_used": [
+        "Friday",
+        "Sunday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Curry leaves",
+      "quantity": 0.03,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 1333.33,
+      "estimated_total_price_lkr": 40.0,
+      "days_used": [
+        "Thursday",
+        "Tuesday"
+      ]
+    },
+    {
+      "name": "Dhal",
+      "quantity": 2.53,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 400.0,
+      "estimated_total_price_lkr": 1012.0,
+      "days_used": [
+        "Friday",
+        "Monday",
+        "Saturday",
+        "Sunday",
+        "Thursday",
+        "Tuesday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Eggplant",
+      "quantity": 0.3,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 200.0,
+      "estimated_total_price_lkr": 60.0,
+      "days_used": [
+        "Tuesday"
+      ]
+    },
+    {
+      "name": "Garlic",
+      "quantity": 0.31,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 320.97,
+      "estimated_total_price_lkr": 99.5,
+      "days_used": [
+        "Monday",
+        "Sunday",
+        "Thursday",
+        "Tuesday"
+      ]
+    },
+    {
+      "name": "Ginger",
+      "quantity": 0.215,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 390.7,
+      "estimated_total_price_lkr": 84.0,
+      "days_used": [
+        "Sunday",
+        "Thursday",
+        "Tuesday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Oil",
+      "quantity": 0.24,
+      "unit": "litre",
+      "estimated_unit_price_lkr": 1733.33,
+      "estimated_total_price_lkr": 416.0,
+      "days_used": [
+        "Friday",
+        "Monday",
+        "Sunday",
+        "Thursday",
+        "Tuesday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Okra",
+      "quantity": 0.3,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 150.0,
+      "estimated_total_price_lkr": 45.0,
+      "days_used": [
+        "Tuesday"
+      ]
+    },
+    {
+      "name": "Onion",
+      "quantity": 2.23,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 173.54,
+      "estimated_total_price_lkr": 387.0,
+      "days_used": [
+        "Friday",
+        "Monday",
+        "Saturday",
+        "Sunday",
+        "Thursday",
+        "Tuesday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Pepper",
+      "quantity": 0.02,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 1500.0,
+      "estimated_total_price_lkr": 30.0,
+      "days_used": [
+        "Thursday"
+      ]
+    },
+    {
+      "name": "Potato",
+      "quantity": 0.8,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 138.75,
+      "estimated_total_price_lkr": 111.0,
+      "days_used": [
+        "Thursday",
+        "Tuesday"
+      ]
+    },
+    {
+      "name": "Rice",
+      "quantity": 7.05,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 250.0,
+      "estimated_total_price_lkr": 1762.5,
+      "days_used": [
+        "Friday",
+        "Monday",
+        "Saturday",
+        "Sunday",
+        "Thursday",
+        "Tuesday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Salt",
+      "quantity": 0.155,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 310.97,
+      "estimated_total_price_lkr": 48.2,
+      "days_used": [
+        "Friday",
+        "Monday",
+        "Saturday",
+        "Sunday",
+        "Thursday",
+        "Tuesday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Soy sauce",
+      "quantity": 0.076,
+      "unit": "litre",
+      "estimated_unit_price_lkr": 625.0,
+      "estimated_total_price_lkr": 47.5,
+      "days_used": [
+        "Friday",
+        "Saturday",
+        "Sunday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Spices",
+      "quantity": 0.04,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 275.0,
+      "estimated_total_price_lkr": 11.0,
+      "days_used": [
+        "Monday",
+        "Saturday"
+      ]
+    },
+    {
+      "name": "Spinach",
+      "quantity": 0.2,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 100.0,
+      "estimated_total_price_lkr": 20.0,
+      "days_used": [
+        "Tuesday"
+      ]
+    },
+    {
+      "name": "Tomato",
+      "quantity": 1.28,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 199.3,
+      "estimated_total_price_lkr": 255.1,
+      "days_used": [
+        "Friday",
+        "Monday",
+        "Saturday",
+        "Sunday",
+        "Thursday",
+        "Tuesday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Turmeric",
+      "quantity": 0.04,
+      "unit": "kg",
+      "estimated_unit_price_lkr": 850.0,
+      "estimated_total_price_lkr": 34.0,
+      "days_used": [
+        "Sunday",
+        "Thursday",
+        "Wednesday"
+      ]
+    },
+    {
+      "name": "Water",
+      "quantity": 1.0,
+      "unit": "litre",
+      "estimated_unit_price_lkr": 0.0,
+      "estimated_total_price_lkr": 0.0,
+      "days_used": [
+        "Friday",
+        "Sunday"
+      ]
+    }
+  ],
+  "estimated_total_lkr": 7854.8,
+  "price_note": "AI-estimated ingredient prices. Not verified live market prices.",
+  "weekly_budget_lkr": 6000.0,
+  "within_budget": false,
+  "remaining_budget_lkr": 0.0,
+  "over_budget_lkr": 1854.8
+}

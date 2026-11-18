@@ -1,0 +1,64 @@
+/* Only adjust Food Preferences content inside the shared CustomerLayout. */
+.mm-content > .fp-embedded {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+}
+.mm-content > .fp-embedded > .fp-content {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+
+/* Food Preferences inside shared Customer Layout */
+
+.mm-dashboard .mm-content > .fp-embedded {
+  display: block !important;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  visibility: visible;
+  opacity: 1;
+
+  --fp-plum: #35152f;
+  --fp-plum-light: #6f246b;
+  --fp-purple: #8b3287;
+  --fp-lime: #a5d64f;
+  --fp-cream: #fffdf5;
+  --fp-yellow: #fff4a3;
+  --fp-text: #35152f;
+}
+
+.mm-dashboard .mm-content .fp-embedded .fp-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 1500px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 18px 0 40px;
+  visibility: visible;
+  opacity: 1;
+}
+
+.mm-dashboard .fp-embedded .fp-grid {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .mm-dashboard .mm-content .fp-embedded .fp-content {
+    padding: 12px 0 30px;
+  }
+}
