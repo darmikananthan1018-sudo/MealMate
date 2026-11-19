@@ -23,6 +23,7 @@ import {
 
 import api, { getShopOwnerProfile } from "../services/api";
 import "../styles/ShopOwnerDashboard.css";
+
 import ShopOwnerLayout from "../components/ShopOwnerLayout";
 
 // ========================================
@@ -428,8 +429,54 @@ function ShopOwnerReceivedOrders() {
       >
         <div className="so-content">
 
-          <div className="so-received-page-intro">
-            <button type="button" className="so-btn so-btn-outline" onClick={() => navigate("/shop/dashboard")}>Back to Dashboard</button>
+          {/* Received Orders hero — purely visual; existing order logic stays unchanged */}
+          <section className="mm-received-hero" aria-labelledby="mm-received-title">
+            <div className="mm-received-hero-copy">
+              <span className="mm-received-eyebrow">
+                <ShoppingBasket size={15} /> MEALMATE PARTNER NETWORK
+              </span>
+              <h1 id="mm-received-title">Received <span>Grocery Baskets</span></h1>
+              <p>Review baskets sent to your shop, manage incoming orders, and keep customers updated on their basket progress.</p>
+              <div className="mm-received-badges">
+                <span><ShoppingBasket size={16} /> Manage baskets</span>
+                <span><Clock3 size={16} /> Track orders</span>
+                <span><CheckCircle2 size={16} /> Update customers</span>
+              </div>
+            </div>
+            <div className="mm-received-hero-art" aria-hidden="true">
+              <div className="mm-received-hero-curve" />
+              <span className="mm-received-float mm-received-float-a"><ShoppingBasket size={22} /></span>
+              <img src="/images/partner-shop-hero.png" alt="" className="mm-received-hero-image" />
+              <span className="mm-received-float mm-received-float-b"><CheckCircle2 size={22} /></span>
+              <span className="mm-received-float mm-received-float-c"><PackageCheck size={22} /></span>
+            </div>
+          </section>
+
+          <div className="mm-received-stats" aria-label="Order statistics">
+            <div className="mm-received-stat mm-received-stat-total">
+              <span className="mm-received-stat-icon"><ShoppingBasket size={21} /></span>
+              <span className="mm-received-stat-label">Total Orders</span>
+              <strong>{stats.total}</strong>
+              <small>All received baskets</small>
+            </div>
+            <div className="mm-received-stat mm-received-stat-pending">
+              <span className="mm-received-stat-icon"><Clock3 size={21} /></span>
+              <span className="mm-received-stat-label">Pending</span>
+              <strong>{stats.pending}</strong>
+              <small>Waiting for your response</small>
+            </div>
+            <div className="mm-received-stat mm-received-stat-active">
+              <span className="mm-received-stat-icon"><PackageCheck size={21} /></span>
+              <span className="mm-received-stat-label">In Progress</span>
+              <strong>{stats.active}</strong>
+              <small>Accepted, preparing or ready</small>
+            </div>
+            <div className="mm-received-stat mm-received-stat-completed">
+              <span className="mm-received-stat-icon"><CheckCircle2 size={21} /></span>
+              <span className="mm-received-stat-label">Completed</span>
+              <strong>{stats.completed}</strong>
+              <small>Successfully completed</small>
+            </div>
           </div>
 
           {/* ERRORS */}
@@ -472,17 +519,9 @@ function ShopOwnerReceivedOrders() {
             id="shop-orders"
           >
             <div className="so-section-heading">
-              <div>
-                <span className="so-eyebrow">
-                  ORDER MANAGEMENT
-                </span>
-
-                <h2>Received Grocery Baskets</h2>
-
-                <p>
-                  Review baskets sent to your shop and
-                  update their progress.
-                </p>
+              <div className="mm-received-list-heading">
+                <h2>Customer Orders</h2>
+                <p>Search, review and update the baskets received by your shop.</p>
               </div>
 
               <button

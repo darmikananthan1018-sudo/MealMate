@@ -31,7 +31,7 @@ import "../styles/CustomerDashboard.css";
 // API CONFIGURATION
 // ========================================
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
 
 function getToken() {
   return (
@@ -391,6 +391,9 @@ export default function ChoosePartnerShop({
       setNotice(
         `Your grocery basket was successfully sent to ${selectedShop.name}. Order #${orderId} has been created.`
       );
+
+      // Open My Orders automatically after the order is created.
+      navigate("/my-orders", { replace: true, state: { createdOrderId: orderId } });
     } catch (error) {
       setSuccess(false);
       setNotice(

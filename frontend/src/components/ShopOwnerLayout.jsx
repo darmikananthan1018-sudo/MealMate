@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   UserRound,
   Bell,
+  CreditCard,
 } from "lucide-react";
 
 import { getShopOwnerProfile } from "../services/api";
@@ -19,6 +20,7 @@ const ROUTES = {
   dashboard: "/shop-owner/dashboard",
   orders: "/shop/orders",
   profile: "/shop-owner/profile",
+  subscription: "/shop-owner/subscription",
   notifications: "/shop-owner/notifications",
   login: "/login",
 };
@@ -54,6 +56,10 @@ export default function ShopOwnerLayout({
     pathname.startsWith(`${ROUTES.orders}/`);
 
   const isProfile = pathname === ROUTES.profile;
+
+  const isSubscription =
+    pathname === ROUTES.subscription ||
+    pathname.startsWith(`${ROUTES.subscription}/`);
 
   const isNotifications =
     pathname === ROUTES.notifications;
@@ -108,9 +114,13 @@ export default function ShopOwnerLayout({
     }
   };
 
-  // RECEIVED ORDERS - SEPARATE PAGE
+  // RECEIVED ORDERS
   const goOrders = () => {
-    goTo(ROUTES.orders);
+    if (typeof onOrdersClick === "function") {
+      onOrdersClick();
+    } else {
+      goTo(ROUTES.orders);
+    }
   };
 
   // NOTIFICATIONS
@@ -192,6 +202,21 @@ export default function ShopOwnerLayout({
           >
             <Settings size={19} />
             <span>My Shop Profile</span>
+          </button>
+
+          {/* MY SUBSCRIPTION — NEW */}
+          <button
+            type="button"
+            className={`so-sidebar-link ${
+              isSubscription ? "so-sidebar-active" : ""
+            }`}
+            onClick={() => goTo(ROUTES.subscription)}
+            aria-current={
+              isSubscription ? "page" : undefined
+            }
+          >
+            <CreditCard size={19} />
+            <span>My Subscription</span>
           </button>
 
           {/* NOTIFICATIONS */}

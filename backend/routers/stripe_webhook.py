@@ -35,7 +35,7 @@ PRICE_CONFIG = {
     ),
     ("shop_owner", "Shop Owner Business"): (
         "STRIPE_SHOP_OWNER_BUSINESS_PRICE_ID",
-        Decimal("15000.00"),
+        Decimal("7000.00"),
     ),
 }
 

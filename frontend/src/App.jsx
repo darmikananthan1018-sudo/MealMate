@@ -47,7 +47,7 @@ import ShopOwnerBasketDetails from "./pages/ShopOwnerBasketDetails";
 import ShopOwnerProfile from "./pages/ShopOwnerProfile";
 import ShopOwnerNotifications from "./pages/ShopOwnerNotifications";
 import ShopOwnerReceivedOrders from "./pages/ShopOwnerReceivedOrders";
-
+import ShopOwnerSubscription from "./pages/ShopOwnerSubscription";
 // ========================================
 // ADMIN PAGES
 // ========================================
@@ -374,6 +374,10 @@ function App() {
           <Route
             path="/shop/orders"
             element={<ShopOwnerReceivedOrders />}
+          />
+          <Route
+            path="/shop-owner/subscription"
+            element={<ShopOwnerSubscription />}
           />
         </Route>
 

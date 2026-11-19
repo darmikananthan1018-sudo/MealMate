@@ -12,6 +12,7 @@ from models.order_item import OrderItem
 from models.notification import Notification
 from routers.auth import get_current_user
 from services.notification_service import notify_all_admins
+from services.shop_subscription_service import is_shop_eligible
 
 
 router = APIRouter(
@@ -311,6 +312,17 @@ def create_order(
         raise HTTPException(
             status_code=404,
             detail="Approved partner shop not found.",
+        )
+
+    # Block new baskets when the shop has no valid trial or paid subscription.
+    # Existing orders remain accessible to the shop owner.
+    if not is_shop_eligible(db, shop):
+        raise HTTPException(
+            status_code=403,
+            detail=(
+                "This partner shop is not accepting new orders "
+                "because its subscription is inactive or expired."
+            ),
         )
 
     order = Order(

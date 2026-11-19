@@ -33,10 +33,10 @@ PRICE_CONFIG = {
         "STRIPE_CUSTOMER_PREMIUM_PRICE_ID",
         Decimal("799.00"),
     ),
-    ("shop_owner", "Shop Owner Business"): (
-        "STRIPE_SHOP_OWNER_BUSINESS_PRICE_ID",
-        Decimal("15000.00"),
-    ),
+   ("shop_owner", "Shop Owner Business"): (
+    "STRIPE_SHOP_OWNER_BUSINESS_PRICE_ID",
+    Decimal("7000.00"),
+),
 }
 
 
@@ -257,9 +257,7 @@ def create_stripe_checkout(
                 "STRIPE_CANCEL_URL",
                 "http://localhost:5173/payment/cancel",
             ),
-            idempotency_key=(
-                f"mealmate-checkout-{payment.id}-{uuid.uuid4().hex}"
-            ),
+           idempotency_key=f"mealmate-checkout-{payment.id}",
         )
 
     except stripe.StripeError:

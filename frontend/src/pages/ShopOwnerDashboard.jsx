@@ -1,5 +1,10 @@
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -9,25 +14,27 @@ import {
   CheckCircle2,
   PackageCheck,
   RefreshCw,
-  LogOut,
-  Search,
-  ChevronDown,
-  X,
-  UserRound,
-  MapPin,
-  Phone,
   AlertCircle,
-  Bell,
-  Settings,
+  UserRound,
+  BarChart3,
+  ArrowRight,
+  Zap,
+  Package,
+  TrendingUp,
 } from "lucide-react";
 
-import api, { getShopOwnerProfile } from "../services/api";
-import "../styles/ShopOwnerDashboard.css";
-import ShopOwnerLayout from "../components/ShopOwnerLayout";
+import api, {
+  getShopOwnerProfile,
+} from "../services/api";
 
-// ========================================
-// ORDER STATUS LABELS
-// ========================================
+import ShopOwnerLayout from "../components/ShopOwnerLayout";
+import "../styles/ShopOwnerDashboard.css";
+
+const ACTIVE_STATUSES = [
+  "accepted",
+  "preparing",
+  "ready",
+];
 
 const STATUS_LABELS = {
   pending: "Pending",
@@ -39,91 +46,32 @@ const STATUS_LABELS = {
   cancelled: "Cancelled",
 };
 
-// ========================================
-// ORDER STATUS ACTIONS
-// ========================================
+const money = (value) => {
+  const amount = Number(value);
 
-const STATUS_ACTIONS = {
-  pending: [
-    { status: "accepted", label: "Accept Order" },
-    { status: "rejected", label: "Reject Order" },
-  ],
-  accepted: [
-    { status: "preparing", label: "Start Preparing" },
-    { status: "cancelled", label: "Cancel Order" },
-  ],
-  preparing: [
-    { status: "ready", label: "Mark as Ready" },
-  ],
-  ready: [
-    { status: "completed", label: "Complete Order" },
-  ],
+  return Number.isFinite(amount)
+    ? `Rs. ${amount.toLocaleString("en-LK", {
+        maximumFractionDigits: 2,
+      })}`
+    : "Amount unavailable";
 };
 
-// ========================================
-// HELPERS
-// ========================================
+const orderDate = (order) => {
+  const raw =
+    order?.created_at ||
+    order?.ordered_at ||
+    order?.createdAt;
 
-const money = (value) =>
-  `Rs. ${Number(value || 0).toLocaleString("en-LK", {
-    maximumFractionDigits: 2,
-  })}`;
+  if (!raw) return null;
 
-const getItems = (order) => {
-  const snapshot = order?.basket_snapshot;
+  const date = new Date(raw);
 
-  if (!snapshot) return [];
-
-  if (Array.isArray(snapshot)) return snapshot;
-
-  if (Array.isArray(snapshot.items)) return snapshot.items;
-
-  if (Array.isArray(snapshot.grocery_items))
-    return snapshot.grocery_items;
-
-  if (Array.isArray(snapshot.basket_items))
-    return snapshot.basket_items;
-
-  if (snapshot.basket) {
-    if (Array.isArray(snapshot.basket))
-      return snapshot.basket;
-
-    if (Array.isArray(snapshot.basket.items))
-      return snapshot.basket.items;
-  }
-
-  return [];
+  return Number.isNaN(date.getTime())
+    ? null
+    : date;
 };
 
-const itemName = (item) =>
-  item.name ||
-  item.item_name ||
-  item.food_name ||
-  item.ingredient ||
-  "Grocery Item";
-
-const itemQuantity = (item) => {
-  const quantity = item.quantity ?? item.qty ?? 1;
-  const unit = item.unit || "";
-
-  return `${quantity} ${unit}`.trim();
-};
-
-const itemPrice = (item) =>
-  item.estimated_total_price_lkr ??
-  item.total_price_lkr ??
-  item.total_price ??
-  item.estimated_price_lkr ??
-  item.estimated_price ??
-  item.price_lkr ??
-  item.price ??
-  null;
-
-// ========================================
-// SHOP OWNER DASHBOARD
-// ========================================
-
-function ShopOwnerDashboard() {
+export default function ShopOwnerDashboard() {
   const navigate = useNavigate();
 
   const [profile, setProfile] = useState(null);
@@ -131,408 +79,743 @@ function ShopOwnerDashboard() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState("");
-  const [actionError, setActionError] = useState("");
-  const [updatingId, setUpdatingId] = useState(null);
+  const [period, setPeriod] = useState("7");
 
-  const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("all");
-  const [selectedOrder, setSelectedOrder] = useState(null);
+  // LOAD SHOP PROFILE AND ORDERS
+  const loadData = useCallback(
+    async (initial = false) => {
+      if (initial) {
+        setLoading(true);
+      } else {
+        setRefreshing(true);
+      }
 
-  // ========================================
-  // LOAD SHOP OWNER PROFILE & ORDERS
-  // ========================================
+      setError("");
 
-  const loadData = async (initial = false) => {
-    if (initial) {
-      setLoading(true);
-    } else {
-      setRefreshing(true);
-    }
-
-    setError("");
-
-    try {
-      const [profileResponse, ordersResponse] =
-        await Promise.all([
+      try {
+        const [
+          profileResponse,
+          ordersResponse,
+        ] = await Promise.all([
           getShopOwnerProfile(),
           api.get("/orders/shop/received"),
         ]);
 
-      setProfile(profileResponse.data);
+        setProfile(profileResponse.data);
 
-      const responseData = ordersResponse.data;
+        const data = ordersResponse.data;
 
-      const receivedOrders = Array.isArray(responseData)
-        ? responseData
-        : Array.isArray(responseData?.orders)
-        ? responseData.orders
-        : [];
+        setOrders(
+          Array.isArray(data)
+            ? data
+            : Array.isArray(data?.orders)
+              ? data.orders
+              : []
+        );
+      } catch (err) {
+        if (
+          [401, 403].includes(
+            err.response?.status
+          )
+        ) {
+          [
+            "mealmate_token",
+            "access_token",
+            "token",
+          ].forEach((key) => {
+            localStorage.removeItem(key);
+          });
 
-      setOrders(receivedOrders);
-    } catch (err) {
-      const status = err.response?.status;
+          navigate("/login", {
+            replace: true,
+          });
 
-      if (status === 401 || status === 403) {
-        localStorage.removeItem("mealmate_token");
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("token");
+          return;
+        }
 
-        navigate("/login", { replace: true });
-        return;
+        setError(
+          err.response?.data?.detail ||
+            "Unable to load shop orders."
+        );
+      } finally {
+        setLoading(false);
+        setRefreshing(false);
       }
-
-      setError(
-        err.response?.data?.detail ||
-          "Unable to load shop orders. Please try again."
-      );
-    } finally {
-      setLoading(false);
-      setRefreshing(false);
-    }
-  };
+    },
+    [navigate]
+  );
 
   useEffect(() => {
     loadData(true);
-  }, []);
+  }, [loadData]);
 
-
-  // Refresh only the Shop Owner profile when it changes.
-  // Customer navbar events are intentionally not used here.
+  // PROFILE UPDATE LISTENER
   useEffect(() => {
     let active = true;
 
-    const refreshShopProfile = async () => {
+    const refreshProfile = async () => {
       try {
-        const response = await getShopOwnerProfile();
-        if (active) setProfile(response.data);
+        const response =
+          await getShopOwnerProfile();
+
+        if (active) {
+          setProfile(response.data);
+        }
       } catch (err) {
-        console.error("Unable to refresh shop owner profile:", err);
+        console.error(
+          "Unable to refresh shop owner profile:",
+          err
+        );
       }
     };
 
     window.addEventListener(
       "mealmate:shop-profile-updated",
-      refreshShopProfile
+      refreshProfile
     );
 
     return () => {
       active = false;
+
       window.removeEventListener(
         "mealmate:shop-profile-updated",
-        refreshShopProfile
+        refreshProfile
       );
     };
   }, []);
 
-  // ========================================
   // ORDER STATISTICS
-  // ========================================
-
-  const stats = useMemo(() => {
-    return {
+  const stats = useMemo(
+    () => ({
       total: orders.length,
 
       pending: orders.filter(
-        (order) => order.status === "pending"
+        (order) =>
+          order.status === "pending"
       ).length,
 
-      active: orders.filter((order) =>
-        ["accepted", "preparing", "ready"].includes(
-          order.status
-        )
+      active: orders.filter(
+        (order) =>
+          ACTIVE_STATUSES.includes(
+            order.status
+          )
       ).length,
 
       completed: orders.filter(
-        (order) => order.status === "completed"
+        (order) =>
+          order.status === "completed"
       ).length,
-    };
-  }, [orders]);
 
-  // ========================================
-  // SEARCH & FILTER
-  // ========================================
+      other: orders.filter(
+        (order) =>
+          ["cancelled", "rejected"].includes(
+            order.status
+          )
+      ).length,
+    }),
+    [orders]
+  );
 
-  const filteredOrders = useMemo(() => {
-    const keyword = search.trim().toLowerCase();
+  // CHART DATA
+  const chartData = useMemo(() => {
+    const days = Number(period);
+    const today = new Date();
 
-    return orders.filter((order) => {
-      const matchesFilter =
-        filter === "all" || order.status === filter;
+    today.setHours(0, 0, 0, 0);
 
-      const matchesSearch =
-        !keyword ||
-        String(order.id).includes(keyword) ||
-        String(order.customer_id).includes(keyword) ||
-        String(order.customer_name || "")
-          .toLowerCase()
-          .includes(keyword) ||
-        String(order.customer_phone || "").includes(keyword) ||
-        String(order.status)
-          .toLowerCase()
-          .includes(keyword);
+    return Array.from(
+      { length: days },
+      (_, index) => {
+        const date = new Date(today);
 
-      return matchesFilter && matchesSearch;
-    });
-  }, [orders, search, filter]);
+        date.setDate(
+          today.getDate() -
+            days +
+            index +
+            1
+        );
 
-  // ========================================
-  // UPDATE ORDER STATUS
-  // ========================================
+        const count = orders.filter(
+          (order) => {
+            const created =
+              orderDate(order);
 
-  const updateStatus = async (order, newStatus) => {
-    if (updatingId !== null) return;
+            return (
+              created &&
+              created.toDateString() ===
+                date.toDateString()
+            );
+          }
+        ).length;
 
-    if (
-      ["rejected", "cancelled"].includes(newStatus) &&
-      !window.confirm(
-        `Are you sure you want to ${
-          newStatus === "rejected" ? "reject" : "cancel"
-        } Order #${order.id}?`
-      )
-    ) {
-      return;
-    }
+        return {
+          label: date.toLocaleDateString(
+            "en-US",
+            {
+              weekday: "short",
+            }
+          ),
 
-    setUpdatingId(order.id);
-    setActionError("");
+          date: date.toLocaleDateString(
+            "en-LK"
+          ),
 
-    try {
-      const response = await api.patch(
-        `/orders/${order.id}/status`,
-        { status: newStatus }
-      );
-
-      const updated = response.data?.order;
-
-      if (!updated) {
-        throw new Error("Updated order was not returned.");
+          count,
+        };
       }
+    );
+  }, [orders, period]);
 
-      setOrders((previous) =>
-        previous.map((existing) =>
-          existing.id === order.id ? updated : existing
+  const chartMax = Math.max(
+    1,
+    ...chartData.map(
+      (day) => day.count
+    )
+  );
+
+  // RECENT ORDERS
+  const recentOrders = useMemo(
+    () =>
+      [...orders]
+        .sort(
+          (a, b) =>
+            (orderDate(b)?.getTime() ||
+              0) -
+            (orderDate(a)?.getTime() ||
+              0)
         )
-      );
+        .slice(0, 3),
+    [orders]
+  );
 
-      setSelectedOrder((previous) =>
-        previous?.id === order.id ? updated : previous
-      );
-    } catch (err) {
-      setActionError(
-        err.response?.data?.detail ||
-          err.message ||
-          "Could not update order status."
-      );
-    } finally {
-      setUpdatingId(null);
+  // ORDER STATUS DONUT
+  const donut = useMemo(() => {
+    if (!stats.total) {
+      return "conic-gradient(#eee5f0 0 100%)";
     }
-  };
 
-  // ========================================
-  // NEW: OPEN ITEM AVAILABILITY PAGE
-  // ========================================
+    const segments = [
+      [stats.pending, "#9ddd2e"],
+      [stats.active, "#922ba8"],
+      [stats.completed, "#b38bf2"],
+      [stats.other, "#d9d0dd"],
+    ];
 
-  const openBasketNotificationPage = (orderId) => {
-    setSelectedOrder(null);
+    let start = 0;
 
-    navigate(`/shop/orders/${orderId}/details`);
-  };
+    const stops = segments.map(
+      ([count, color]) => {
+        const end =
+          start +
+          (count / stats.total) * 100;
 
-  // ========================================
-  // LOGOUT
-  // ========================================
+        const stop =
+          `${color} ${start}% ${end}%`;
 
-  const logout = () => {
-    localStorage.removeItem("mealmate_token");
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("token");
+        start = end;
 
-    navigate("/login", { replace: true });
-  };
-
-  // ========================================
-  // ORDER STATUS BUTTONS
-  // ========================================
-
-  const renderActions = (order) => {
-    const actions = STATUS_ACTIONS[order.status] || [];
-
-    if (actions.length === 0) return null;
-
-    return (
-      <div className="so-actions">
-        {actions.map((action) => (
-          <button
-            key={action.status}
-            type="button"
-            disabled={updatingId !== null}
-            className={
-              ["rejected", "cancelled"].includes(action.status)
-                ? "so-btn so-btn-danger"
-                : "so-btn so-btn-primary"
-            }
-            onClick={() =>
-              updateStatus(order, action.status)
-            }
-          >
-            {updatingId === order.id
-              ? "Updating..."
-              : action.label}
-          </button>
-        ))}
-      </div>
+        return stop;
+      }
     );
+
+    return `conic-gradient(${stops.join(", ")})`;
+  }, [stats]);
+
+  // NAVIGATION
+  const goOrders = () => {
+    navigate("/shop/orders");
   };
 
-  // ========================================
-  // LOADING
-  // ========================================
-
-  if (loading) {
-    return (
-      <div className="so-loading">
-        <RefreshCw className="so-spin" size={28} />
-        <p>Loading your partner shop dashboard...</p>
-      </div>
-    );
-  }
-
-  // ========================================
-  // MAIN UI
-  // ========================================
+  const goProfile = () => {
+    navigate("/shop-owner/profile");
+  };
 
   return (
-    <>
-      <ShopOwnerLayout
-        profile={profile}
-        onOrdersClick={() => {
-          navigate("/shop/orders");
-        }}
-      >
-        <div className="so-content">
+    <ShopOwnerLayout
+      profile={profile}
+      onOrdersClick={goOrders}
+    >
+      <div className="so-content mm-final-dashboard">
 
-          {/* WELCOME SECTION */}
+        {/* HERO SECTION */}
+        <section className="mm-final-hero mm-grocery-style-hero">
 
-          <section className="so-welcome">
-            <div>
-              <span className="so-eyebrow">
-                MEALMATE PARTNER NETWORK
-              </span>
+          <div className="mm-final-hero-copy">
 
-              <h2>
-                Welcome back,{" "}
+            <span className="mm-final-eyebrow">
+              <ShoppingBasket size={15} />
+              MEALMATE PARTNER NETWORK
+            </span>
+
+            <h2>
+              Welcome back,{" "}
+              <span className="mm-hero-name">
                 {profile?.shop_name ||
                   profile?.full_name ||
-                  "Shop Owner"}!
-              </h2>
+                  "Shop Owner"}
+                !
+              </span>
+            </h2>
 
-              <p>
-                Manage customer grocery baskets and keep
-                every order moving smoothly.
-              </p>
+            <p>
+              Manage customer grocery baskets,
+              track incoming orders, and keep
+              every order moving smoothly.
+            </p>
+
+            <div className="mm-hero-chips">
+
+              <span>
+                <ShoppingBasket size={15} />
+                Manage baskets
+              </span>
+
+              <span>
+                <Clock3 size={15} />
+                Track orders
+              </span>
+
+              <span>
+                <CheckCircle2 size={15} />
+                Trusted partner
+              </span>
+
             </div>
-
-            <div className="so-welcome-icon">
-              <Store size={44} strokeWidth={1.5} />
-            </div>
-          </section>
-
-          {/* ORDER STATISTICS */}
-
-          <section className="so-stats">
-
-            <div className="so-stat-card">
-              <div className="so-stat-icon purple">
-                <ShoppingBasket size={22} />
-              </div>
-
-              <span>Total Orders</span>
-              <strong>{stats.total}</strong>
-              <small>All received baskets</small>
-            </div>
-
-            <div className="so-stat-card">
-              <div className="so-stat-icon yellow">
-                <Clock3 size={22} />
-              </div>
-
-              <span>Pending Orders</span>
-              <strong>{stats.pending}</strong>
-              <small>Waiting for your response</small>
-            </div>
-
-            <div className="so-stat-card">
-              <div className="so-stat-icon lime">
-                <PackageCheck size={22} />
-              </div>
-
-              <span>In Progress</span>
-              <strong>{stats.active}</strong>
-              <small>Accepted, preparing or ready</small>
-            </div>
-
-            <div className="so-stat-card">
-              <div className="so-stat-icon green">
-                <CheckCircle2 size={22} />
-              </div>
-
-              <span>Completed</span>
-              <strong>{stats.completed}</strong>
-              <small>Successfully completed</small>
-            </div>
-          </section>
-
-          <div className="so-dashboard-orders-link">
-            <button type="button" className="so-btn so-btn-primary"
-              onClick={() => navigate("/shop/orders")}
-            >
-              <ShoppingBasket size={18} /> View Received Orders
-            </button>
           </div>
 
-          {/* ERRORS */}
+          <div
+            className="mm-final-hero-art"
+            aria-hidden="true"
+          >
+            <div className="mm-final-hero-circle" />
 
-          {error && (
-            <div className="so-alert">
-              <AlertCircle size={19} />
-              <span>{error}</span>
+            <span className="mm-hero-float mm-hero-float-one">
+              <ShoppingBasket size={21} />
+            </span>
+
+            <img
+              className="mm-hero-shop-image"
+              src="/images/partner-shop-hero.png"
+              alt=""
+            />
+
+            <span className="mm-hero-float mm-hero-float-two">
+              <CheckCircle2 size={21} />
+            </span>
+
+            <span className="mm-hero-float mm-hero-float-three">
+              <PackageCheck size={21} />
+            </span>
+          </div>
+        </section>
+
+        {/* ORDER STATISTICS */}
+        <section
+          className="mm-final-stats"
+          aria-label="Order statistics"
+        >
+          {[
+            {
+              title: "Total Orders",
+              count: stats.total,
+              description: "All received baskets",
+              icon: ShoppingBasket,
+              theme: "pink",
+            },
+            {
+              title: "Pending Orders",
+              count: stats.pending,
+              description: "Waiting for your response",
+              icon: Clock3,
+              theme: "lime",
+            },
+            {
+              title: "In Progress",
+              count: stats.active,
+              description: "Accepted, preparing or ready",
+              icon: PackageCheck,
+              theme: "violet",
+            },
+            {
+              title: "Completed",
+              count: stats.completed,
+              description: "Successfully completed",
+              icon: CheckCircle2,
+              theme: "rose",
+            },
+          ].map(
+            ({
+              title,
+              count,
+              description,
+              icon: Icon,
+              theme,
+            }) => (
+              <div
+                className={`mm-final-stat mm-final-stat-${theme}`}
+                key={title}
+              >
+                <span className="mm-final-stat-icon">
+                  <Icon size={25} />
+                </span>
+
+                <span className="mm-final-stat-title">
+                  {title}
+                </span>
+
+                <strong>{count}</strong>
+
+                <small>{description}</small>
+              </div>
+            )
+          )}
+        </section>
+
+        {/* ERROR MESSAGE */}
+        {error && (
+          <div
+            className="mm-final-error"
+            role="alert"
+          >
+            <AlertCircle size={19} />
+
+            <span>{error}</span>
+
+            <button
+              type="button"
+              onClick={() => loadData(false)}
+            >
+              Retry
+            </button>
+          </div>
+        )}
+
+        {/* DASHBOARD PANELS */}
+        <div className="mm-final-panels">
+
+          {/* ORDER OVERVIEW */}
+          <section className="mm-final-panel">
+
+            <div className="mm-final-panel-header">
+              <h3>
+                <span className="mm-final-panel-icon">
+                  <BarChart3 size={23} />
+                </span>
+                Order Overview
+              </h3>
+
+              <select
+                value={period}
+                onChange={(event) =>
+                  setPeriod(event.target.value)
+                }
+                aria-label="Chart time period"
+              >
+                <option value="7">
+                  Last 7 Days
+                </option>
+
+                <option value="14">
+                  Last 14 Days
+                </option>
+              </select>
+            </div>
+
+            <div
+              className="mm-final-chart"
+              role="img"
+              aria-label="Orders received per day"
+            >
+              <div className="mm-final-chart-plot">
+                {chartData.map(
+                  (day, index) => (
+                    <div
+                      className="mm-final-chart-day"
+                      key={`${day.date}-${index}`}
+                      title={`${day.date}: ${day.count} orders`}
+                    >
+                      <span className="mm-final-chart-value">
+                        {day.count || ""}
+                      </span>
+
+                      <div
+                        className={`mm-final-chart-bar ${
+                          index % 2
+                            ? "purple"
+                            : "green"
+                        }`}
+                        style={{
+                          height: `${
+                            day.count
+                              ? Math.max(
+                                  4,
+                                  (day.count /
+                                    chartMax) *
+                                    100
+                                )
+                              : 0
+                          }%`,
+                        }}
+                      />
+
+                      <span className="mm-final-chart-label">
+                        {day.label}
+                      </span>
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+          </section>
+
+          {/* ORDER STATUS */}
+          <section className="mm-final-panel">
+
+            <div className="mm-final-panel-header">
+              <h3>
+                <span className="mm-final-panel-icon">
+                  <Package size={23} />
+                </span>
+                Order Status
+              </h3>
+            </div>
+
+            <div className="mm-final-status-body">
+
+              <div
+                className="mm-final-donut"
+                style={{
+                  background: donut,
+                }}
+              >
+                <div className="mm-final-donut-hole">
+                  <strong>
+                    {stats.total}
+                  </strong>
+
+                  <span>Orders</span>
+                </div>
+              </div>
+
+              <div className="mm-final-legend">
+
+                <div>
+                  <i className="pending" />
+                  Pending
+                  <strong>
+                    {stats.pending}
+                  </strong>
+                </div>
+
+                <div>
+                  <i className="progress" />
+                  In Progress
+                  <strong>
+                    {stats.active}
+                  </strong>
+                </div>
+
+                <div>
+                  <i className="completed" />
+                  Completed
+                  <strong>
+                    {stats.completed}
+                  </strong>
+                </div>
+
+                {stats.other > 0 && (
+                  <div>
+                    <i className="other" />
+                    Cancelled / Rejected
+                    <strong>
+                      {stats.other}
+                    </strong>
+                  </div>
+                )}
+
+              </div>
+            </div>
+          </section>
+
+          {/* RECENT ORDERS */}
+          <section className="mm-final-panel">
+
+            <div className="mm-final-panel-header">
+              <h3>
+                <span className="mm-final-panel-icon">
+                  <ShoppingBasket size={23} />
+                </span>
+                Recent Orders
+              </h3>
 
               <button
                 type="button"
-                onClick={() => loadData()}
+                className="mm-final-text-link"
+                onClick={goOrders}
               >
-                Retry
+                View All
+                <ArrowRight size={17} />
               </button>
             </div>
-          )}
 
-          {actionError && (
-            <div className="so-alert">
-              <AlertCircle size={19} />
-              <span>{actionError}</span>
+            <div className="mm-final-order-list">
+
+              {recentOrders.length === 0 ? (
+                <div className="mm-final-empty">
+                  No recent orders yet.
+                </div>
+              ) : (
+                recentOrders.map((order) => {
+                  const date = orderDate(order);
+
+                  const amount =
+                    order.total_price_lkr ??
+                    order.total_amount ??
+                    order.total_price ??
+                    order.estimated_total_price_lkr;
+
+                  return (
+                    <button
+                      type="button"
+                      className="mm-final-order"
+                      key={order.id}
+                      onClick={() =>
+                        navigate(
+                          `/shop/orders/${order.id}/details`
+                        )
+                      }
+                    >
+                      <span className="mm-final-order-id">
+                        #ORD{order.id}
+                      </span>
+
+                      <span className="mm-final-order-customer">
+                        <span className="mm-final-user-icon">
+                          <UserRound size={20} />
+                        </span>
+
+                        <span>
+                          <strong>
+                            {order.customer_name ||
+                              `Customer #${
+                                order.customer_id ||
+                                order.id
+                              }`}
+                          </strong>
+
+                          <small>
+                            {date
+                              ? date.toLocaleString(
+                                  "en-LK",
+                                  {
+                                    dateStyle: "medium",
+                                    timeStyle: "short",
+                                  }
+                                )
+                              : "Date unavailable"}
+                          </small>
+                        </span>
+                      </span>
+
+                      <strong className="mm-final-order-price">
+                        {amount == null
+                          ? "—"
+                          : money(amount)}
+                      </strong>
+
+                      <span
+                        className={`mm-final-status-pill ${
+                          order.status || "unknown"
+                        }`}
+                      >
+                        {STATUS_LABELS[
+                          order.status
+                        ] ||
+                          order.status ||
+                          "Unknown"}
+                      </span>
+                    </button>
+                  );
+                })
+              )}
+            </div>
+          </section>
+
+          {/* QUICK ACTIONS */}
+          <section className="mm-final-panel">
+
+            <div className="mm-final-panel-header">
+              <h3>
+                <span className="mm-final-panel-icon">
+                  <Zap size={23} />
+                </span>
+                Quick Actions
+              </h3>
+            </div>
+
+            <div className="mm-final-actions">
 
               <button
                 type="button"
-                onClick={() => setActionError("")}
-                aria-label="Dismiss error"
+                className="pink"
+                onClick={goOrders}
               >
-                <X size={17} />
+                <ShoppingBasket size={27} />
+                <span>
+                  View Received Orders
+                </span>
               </button>
+
+              <button
+                type="button"
+                className="lime"
+                onClick={goProfile}
+              >
+                <Store size={27} />
+                <span>
+                  Edit Shop Profile
+                </span>
+              </button>
+
+              <button
+                type="button"
+                className="green"
+                onClick={() =>
+                  loadData(false)
+                }
+                disabled={refreshing}
+              >
+                <RefreshCw size={27} />
+
+                <span>
+                  {refreshing
+                    ? "Refreshing..."
+                    : "Refresh Orders"}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                className="purple"
+                onClick={goOrders}
+              >
+                <TrendingUp size={27} />
+                <span>
+                  Manage Orders
+                </span>
+              </button>
+
             </div>
-          )}
-
-          {/* FOOTER */}
-
-          <footer className="so-footer">
-            © MealMate Partner Portal · Plan Smart.
-            Eat Healthy.
-          </footer>
+          </section>
         </div>
-      </ShopOwnerLayout>
 
+        {/* FOOTER */}
+        <footer className="mm-final-footer">
+          © MealMate Partner Portal ·
+          Plan Smart. Eat Healthy.
+        </footer>
 
-    </>
+      </div>
+    </ShopOwnerLayout>
   );
 }
-
-export default ShopOwnerDashboard;
