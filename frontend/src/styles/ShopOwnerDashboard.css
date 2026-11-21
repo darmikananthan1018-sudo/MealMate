@@ -5265,4 +5265,159 @@ button:where(.availability-save-btn, .item-save-btn):disabled {
     grid-column: 2;
   }
 }
+/* Shop Owner Subscription - Reduce Side Gaps */
 
+.shop-subscription-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 45px;
+  padding-right: 45px;
+  box-sizing: border-box;
+}
+
+.shop-subscription-container {
+  width: 100%;
+  max-width: none;
+}
+/* =========================================
+   SHOP OWNER SUBSCRIPTION - SIDE GAP FIX
+   ========================================= */
+
+.sos-page {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.sos-page .sos-container {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sos-page .sos-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* ==========================================
+   SHOP OWNER SUBSCRIPTION - FINAL GAP FIX
+   ========================================== */
+
+.sos-page {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 20px 12px 45px !important;
+  box-sizing: border-box !important;
+}
+
+.sos-page .sos-container {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 768px) {
+  .sos-page {
+    padding: 16px 10px 30px !important;
+  }
+}
+/* =========================================
+   MEALMATE SUBSCRIPTION HERO - CLEAN FIX
+   ========================================= */
+
+.sos-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 18px;
+  background: #512052;
+}
+
+/* Single green curved shape */
+.sos-hero::before {
+  content: "";
+  position: absolute;
+  width: 48%;
+  height: 160%;
+  top: -30%;
+  right: -12%;
+  background: #d5ff8a;
+  border-radius: 50% 0 0 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sos-hero::after {
+  content: none;
+}
+
+/* Remove old circle */
+.sos-hero-art-circle {
+  display: none;
+}
+
+/* Left text */
+.sos-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Shop image container */
+.sos-hero .sos-hero-art {
+  position: absolute;
+  top: 0;
+  right: 3%;
+  bottom: auto;
+  left: auto;
+  width: 36%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  transform: none;
+  z-index: 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Shop image */
+.sos-hero .sos-hero-shop-image {
+  display: block;
+  width: 100%;
+  height: 90%;
+  max-width: 360px;
+  max-height: 210px;
+  object-fit: contain;
+  margin: 0;
+  transform: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .sos-hero::before {
+    width: 65%;
+    right: -35%;
+  }
+
+  .sos-hero .sos-hero-art {
+    width: 40%;
+    right: 1%;
+  }
+
+  .sos-hero .sos-hero-shop-image {
+    max-width: 180px;
+  }
+}

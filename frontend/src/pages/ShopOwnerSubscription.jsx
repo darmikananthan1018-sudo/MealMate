@@ -387,19 +387,15 @@ export default function ShopOwnerSubscription() {
               </div>
             </div>
 
-            <div
-              className="sos-hero-art"
-              aria-hidden="true"
-            >
-              <div className="sos-hero-art-circle">
-                <div className="sos-hero-art-bag">
-                  🛍️
-                </div>
-                <div className="sos-hero-art-vegetables">
-                  🥬 🥕 🍅
-                </div>
-              </div>
-            </div>
+            <div className="sos-hero">
+  <div className="sos-hero-content">
+    {/* Existing badge, heading, description and features */}
+  </div>
+
+  <div className="sos-hero-art" aria-hidden="true">
+   
+  </div>
+</div>
           </section>
 
           {/* REFRESH */}
@@ -418,6 +414,9 @@ export default function ShopOwnerSubscription() {
               Refresh
             </button>
           </div>
+
+
+
 
           {/* ERROR */}
           {error && (
