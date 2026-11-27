@@ -158,3 +158,4 @@ def get_partner_shop_details(
     if not shop or not is_shop_eligible(db, shop):
         raise HTTPException(status_code=404, detail="Available partner shop not found.")
     return serialize_shop(shop, db)
+

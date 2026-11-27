@@ -441,6 +441,25 @@ export default function WeeklyGroceryBasket({
     };
   }, [initialBudget]);
 
+  // Keep the read-only navbar cart preview synchronized with basket edits.
+  useEffect(() => {
+    if (loading || loadError || basketId === null) return;
+
+    const cartSnapshot = {
+      basketId,
+      items: items.map((item) => ({
+        id: item.id,
+        name: item.name,
+        quantity: item.quantity,
+        unit: item.unit,
+        total: Number(itemTotal(item).toFixed(2)),
+      })),
+    };
+
+    localStorage.setItem("mealmate_cart_preview", JSON.stringify(cartSnapshot));
+    window.dispatchEvent(new CustomEvent("mealmate:cart-updated", { detail: cartSnapshot }));
+  }, [items, basketId, loading, loadError]);
+
   // ========================================
   // CALCULATIONS
   // ========================================
@@ -455,6 +474,12 @@ export default function WeeklyGroceryBasket({
   );
 
   const remaining = weeklyBudget - estimatedTotal;
+  const budgetReady = Number.isFinite(weeklyBudget) && weeklyBudget > 0;
+  const budgetFull = !budgetReady || remaining <= 0.005;
+  const overBudget = budgetReady && estimatedTotal > weeklyBudget + 0.005;
+  const budgetMessage = !budgetReady
+    ? "Please set your weekly budget in Food Preferences first."
+    : "Weekly budget limit reached. Remove an item or reduce its quantity to add more.";
 
   const percent =
     weeklyBudget > 0
@@ -490,30 +515,30 @@ export default function WeeklyGroceryBasket({
   // ========================================
 
   const changeQuantity = (id, direction) => {
-    setItems((previous) =>
-      previous.map((item) => {
-        if (item.id !== id) return item;
-
-        const step = quantityStep(item.unit);
-
-        const newQuantity = Math.max(
-          step,
-          Number(
-            (
-              item.quantity +
-              direction * step
-            ).toFixed(4)
-          )
-        );
-
-        return {
-          ...item,
-          quantity: newQuantity,
-          backendTotal: null,
-        };
-      })
+    const target = items.find((item) => item.id === id);
+    if (!target || adding) return;
+    const step = quantityStep(target.unit);
+    const newQuantity = Math.max(
+      step,
+      Number((Number(target.quantity) + direction * step).toFixed(4))
     );
+    if (newQuantity === Number(target.quantity)) return;
 
+    const newCost = Number(target.unitPrice || 0) * newQuantity;
+    const nextTotal = estimatedTotal - itemTotal(target) + newCost;
+    if (direction > 0 && (!budgetReady || nextTotal > weeklyBudget + 0.005)) {
+      setFeedback(!budgetReady
+        ? budgetMessage
+        : `Cannot increase ${target.name}. Remaining budget: ${money(Math.max(0, remaining))}.`);
+      return;
+    }
+
+    setItems((previous) => previous.map((item) =>
+      item.id === id
+        ? { ...item, quantity: newQuantity, backendTotal: null }
+        : item
+    ));
+    setFeedback("");
     setSavedNotice(false);
   };
 
@@ -547,6 +572,11 @@ export default function WeeklyGroceryBasket({
       return;
     }
 
+    if (budgetFull) {
+      setFeedback(budgetMessage);
+      return;
+    }
+
     setAdding(true);
     setFeedback("AI is estimating the grocery price...");
 
@@ -576,6 +606,15 @@ export default function WeeklyGroceryBasket({
         throw new Error(
           "AI did not return a valid estimated price."
         );
+      }
+
+      // Check the price BEFORE adding anything to the basket.
+      if (estimatedTotal + aiTotal > weeklyBudget + 0.005) {
+        setFeedback(
+          `Cannot add ${name.trim()}. Estimated cost: ${money(aiTotal)}. ` +
+          `Remaining budget: ${money(Math.max(0, remaining))}. Please choose a cheaper item or reduce the quantity.`
+        );
+        return;
       }
 
       const newItem = {
@@ -628,6 +667,13 @@ export default function WeeklyGroceryBasket({
   const saveBasket = async () => {
     if (basketId === null || saving) {
       setFeedback("Generate your meal plan first, or wait for saving to finish.");
+      return false;
+    }
+
+    if (!budgetReady || overBudget) {
+      setFeedback(!budgetReady
+        ? budgetMessage
+        : `Basket exceeds your weekly budget by ${money(estimatedTotal - weeklyBudget)}. Reduce items before saving.`);
       return false;
     }
 
@@ -907,6 +953,7 @@ export default function WeeklyGroceryBasket({
                       type="button"
                       className="wgb-delete"
                       aria-label={`Remove ${item.name}`}
+                        disabled={adding}
                       onClick={() =>
                         removeItem(item.id)
                       }
@@ -919,7 +966,7 @@ export default function WeeklyGroceryBasket({
                         type="button"
                         aria-label={`Decrease ${item.name}`}
                         disabled={
-                          item.quantity <=
+                          adding || item.quantity <=
                           quantityStep(item.unit)
                         }
                         onClick={() =>
@@ -942,6 +989,10 @@ export default function WeeklyGroceryBasket({
                       <button
                         type="button"
                         aria-label={`Increase ${item.name}`}
+                        disabled={adding || !budgetReady ||
+                          estimatedTotal - itemTotal(item) +
+                            Number(item.unitPrice || 0) *
+                            (Number(item.quantity) + quantityStep(item.unit)) > weeklyBudget + 0.005}
                         onClick={() =>
                           changeQuantity(
                             item.id,
@@ -1024,14 +1075,39 @@ export default function WeeklyGroceryBasket({
             type="button"
             className="wgb-primary"
             onClick={() => { setFeedback(""); setShowAddModal(true); }}
-            disabled={loading || !!loadError}
+            disabled={loading || !!loadError || adding || budgetFull}
+            title={budgetFull ? budgetMessage : "Add more grocery items"}
           >
-            <Plus size={18} /> Add More Items
+            {budgetFull ? <><Wallet size={18} /> Budget Limit Reached</> : <><Plus size={18} /> Add More Items</>}
           </button>
         </div>
+        {budgetFull && !loading && !loadError && (
+          <div
+            role="alert"
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              gap: 10,
+              marginTop: 14,
+              padding: "14px 16px",
+              borderRadius: 12,
+              background: "#FFF1F0",
+              border: "1px solid #F4C7C3",
+              color: "#873A38",
+            }}
+          >
+            <AlertCircle size={20} style={{ flexShrink: 0, marginTop: 2 }} />
+            <div>
+              <strong style={{ display: "block", marginBottom: 4 }}>
+                {budgetReady ? "Weekly Budget Limit Reached!" : "Weekly Budget Not Set"}
+              </strong>
+              <span>{budgetMessage}</span>
+            </div>
+          </div>
+        )}
       </section>
 
-      {showAddModal && (
+      {showAddModal && !budgetFull && (
         <div
           className="wgb-modal-overlay"
           onMouseDown={(event) => {
@@ -1160,7 +1236,7 @@ export default function WeeklyGroceryBasket({
               !validQuantity ||
               adding ||
               loading ||
-              !!loadError
+              !!loadError || budgetFull
             }
           >
             <Plus size={18} />
@@ -1266,7 +1342,7 @@ export default function WeeklyGroceryBasket({
             disabled={
               loading || saving || adding ||
               !!loadError ||
-              basketId === null
+              basketId === null || !budgetReady || overBudget
             }
           >
             <Save size={17} />
@@ -1280,7 +1356,7 @@ export default function WeeklyGroceryBasket({
             disabled={
               loading || saving || adding ||
               !!loadError ||
-              basketId === null
+              basketId === null || !budgetReady || overBudget
             }
           >
             Choose Partner Shop

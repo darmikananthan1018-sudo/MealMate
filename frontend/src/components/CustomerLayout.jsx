@@ -12,6 +12,8 @@ import {
   Settings,
   CalendarDays,
   ShoppingBasket,
+  ShoppingCart,
+  X,
   Leaf,
   Clock3,
   Sparkles,
@@ -111,6 +113,39 @@ export default function CustomerLayout() {
 
   const [customer, setCustomer] =
     useState(null);
+
+  const [cartOpen, setCartOpen] = useState(false);
+  const [cartSnapshot, setCartSnapshot] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("mealmate_cart_preview") || "null");
+    } catch {
+      return null;
+    }
+  });
+
+  useEffect(() => {
+    const refreshCart = (event) => {
+      if (event?.detail) {
+        setCartSnapshot(event.detail);
+        return;
+      }
+      try {
+        setCartSnapshot(JSON.parse(localStorage.getItem("mealmate_cart_preview") || "null"));
+      } catch {
+        setCartSnapshot(null);
+      }
+    };
+    window.addEventListener("mealmate:cart-updated", refreshCart);
+    window.addEventListener("storage", refreshCart);
+    return () => {
+      window.removeEventListener("mealmate:cart-updated", refreshCart);
+      window.removeEventListener("storage", refreshCart);
+    };
+  }, []);
+
+  const cartItems = cartSnapshot?.items || [];
+  const cartTotal = cartItems.reduce((sum, item) => sum + Number(item.total || 0), 0);
+  const cartMoney = (value) => `Rs. ${Number(value || 0).toLocaleString("en-LK", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
   // ========================================
   // LOAD LOGGED-IN CUSTOMER
@@ -215,6 +250,7 @@ export default function CustomerLayout() {
   // ========================================
 
   const logout = () => {
+    localStorage.removeItem("mealmate_cart_preview");
     localStorage.removeItem("mealmate_token");
     localStorage.removeItem("access_token");
     localStorage.removeItem("token");
@@ -384,6 +420,17 @@ export default function CustomerLayout() {
 
           <div className="mm-topbar-actions">
 
+            {/* READ-ONLY GROCERY CART */}
+            <button
+              type="button"
+              className="mm-icon-button mm-cart-trigger"
+              aria-label={`View grocery cart, ${cartItems.length} items`}
+              onClick={() => setCartOpen(true)}
+            >
+              <ShoppingCart size={21} />
+              {cartItems.length > 0 && <span className="mm-cart-count">{cartItems.length}</span>}
+            </button>
+
             {/* NOTIFICATIONS */}
 
             <button
@@ -428,6 +475,42 @@ export default function CustomerLayout() {
 
           </div>
         </header>
+
+        {/* READ-ONLY CART POPUP */}
+        {cartOpen && (
+          <div className="mm-cart-overlay" onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setCartOpen(false);
+          }}>
+            <section className="mm-cart-panel" role="dialog" aria-modal="true" aria-label="My Grocery Basket">
+              <div className="mm-cart-header">
+                <div>
+                  <h2>My Grocery Basket</h2>
+                  <p>{cartItems.length} items in your basket</p>
+                </div>
+                <button type="button" className="mm-cart-close" aria-label="Close cart" onClick={() => setCartOpen(false)}>
+                  <X size={21} />
+                </button>
+              </div>
+              <div className="mm-cart-items">
+                {cartItems.length === 0 ? (
+                  <p className="mm-cart-empty">No grocery items yet. Open Weekly Grocery Basket to view your list.</p>
+                ) : cartItems.map((item) => (
+                  <div className="mm-cart-row" key={item.id}>
+                    <div>
+                      <strong>{item.name}</strong>
+                      <small>{item.quantity} {item.unit}</small>
+                    </div>
+                    <strong>{cartMoney(item.total)}</strong>
+                  </div>
+                ))}
+              </div>
+              <div className="mm-cart-footer">
+                <span>Estimated Total</span>
+                <strong>{cartMoney(cartTotal)}</strong>
+              </div>
+            </section>
+          </div>
+        )}
 
         {/* PAGE CONTENT */}
 
