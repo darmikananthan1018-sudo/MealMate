@@ -32,7 +32,7 @@ const photoUrl = (value) => {
     return value;
   }
 
-  return `http://127.0.0.1:8000${value}`;
+  return `${import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000"}${value}`;
 };
 
 export default function ShopOwnerLayout({

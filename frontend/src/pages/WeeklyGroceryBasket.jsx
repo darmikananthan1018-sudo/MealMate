@@ -36,7 +36,8 @@ import "../styles/CustomerDashboard.css";
 const EDIT_KEY = (id) =>
   `mealmate_basket_edits_${id}`;
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000";
 
 async function syncBasketToBackend(basketId, items) {
   const token = localStorage.getItem("mealmate_token") || localStorage.getItem("access_token");

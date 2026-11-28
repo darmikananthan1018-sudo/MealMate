@@ -161,7 +161,8 @@ export default function PremiumPlans() {
   // Uses the existing authenticated backend; no changes to api.js required.
   const subscriptionRequest = async (path, body = {}) => {
     const token = localStorage.getItem("mealmate_token");
-    const response = await fetch(`http://127.0.0.1:8000${path}`, {
+  const response = await fetch(
+  `${import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000"}${path}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

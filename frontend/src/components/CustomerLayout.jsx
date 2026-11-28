@@ -456,7 +456,7 @@ export default function CustomerLayout() {
               <span className="mm-avatar">
                 {customer?.profile_photo ? (
                   <img
-                    src={`http://127.0.0.1:8000${customer.profile_photo}`}
+                  src={`${import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:8000"}${customer.profile_photo}`}
                     alt="My Profile"
                     className="mm-navbar-avatar-image"
                   />
